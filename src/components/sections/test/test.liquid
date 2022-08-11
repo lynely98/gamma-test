@@ -1,0 +1,35 @@
+<div >
+  <div class="max-w-2xl mx-auto py-16 px-4 sm:py-medium sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="md:flex md:items-center md:justify-between">
+      <h2 class="text-2xl font-extrabold tracking-tight text-headerColor" id="test">, fetched using preact in jsx</h2>
+      <span>{{shop.permanent_domain}}</span>
+    </div>
+  </div>
+</div>
+
+{% comment %} 
+<---------------- Section JS handling ----------------> 
+The below code will create a minified js version of preact code.
+The render script accepts 3 variables: srcUrl, priority of load, and async or defer
+{% endcomment %}
+{% capture src_url %}{{ 'test.js' | asset_url }}{% endcapture %}
+{% render 'atom_script',  src: src_url, priority: 'important', type: "async" %} 
+
+{% schema %}
+{
+ "name": "test",
+ "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "default": "test",
+    "label": "Title"
+  }
+ ],
+ "presets": [
+  {
+    "name": "test"
+  }
+ ]
+} 
+{% endschema %}
